@@ -1,0 +1,26 @@
+<nav class = "navbar navbar-expand-lg navbar-dark rounded">
+  <button class="navbar-toggler" type="button"> 
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div>
+    <ul>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Home </a>
+      </li>
+      <li class="nav-item" *ngIf="!auth.isLoggedIn()">
+        <a routerLink="/login" class="nav-link">login </a>
+      </li>
+      <li class="nav-item" *ngIf="!auth.isLoggedIn()">
+        <a routerLink="/register" class="nav-link">Register </a>
+      </li>
+      <li class="nav-item" *ngIf="!auth.isLoggedIn()">
+        <a routerLink="/profile" class="nav-link">{{auth.getUserDetails()?.first_name}} Profile</a>
+      </li>
+      <li class="nav-item" *ngIf="!auth.isLoggedIn()">
+        <a (click)="auth.logout()" routerLink="" class="nav-link">Log Out</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
